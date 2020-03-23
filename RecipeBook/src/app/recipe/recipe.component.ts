@@ -47,12 +47,10 @@ export class RecipeComponent implements OnInit {
   async updateRecipe(){
 		if(this.recipe.id !== undefined){
       await this.recipeService.updateRecipe(this.recipe);
-      alert('Recipe Edited Successfully');
 		} else {
       this.recipe.userId = (await this.oktaAuth.getUser()).email;
 
       await this.recipeService.createRecipe(this.recipe);
-      alert('Recipe Created Successfully');
 		}
 		this.recipe = new Recipe();
     this._location.back();
@@ -60,10 +58,10 @@ export class RecipeComponent implements OnInit {
   }
 
   clearRecipe(){
-    if(confirm(`Are you sure you want to cancel? This cannot be undone`)){
+    // if(confirm(`Are you sure you want to cancel? This cannot be undone`)){
       this._location.back();
       this.recipe = new Recipe();
-    }
+    // }
 
   }
 

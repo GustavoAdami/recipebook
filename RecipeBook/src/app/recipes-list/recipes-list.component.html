@@ -12,92 +12,59 @@
     <input type="radio" id="typeFavorite" name="typeOfFilter" value="false" [(ngModel)]="typeOfFilter" />
   </label> -->
   <mat-form-field fxFlex="100%" fxFlex.gt-sm="20%">
-    <input matInput type="text" ng-checked="!typeText" [(ngModel)]="filter" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+    <input matInput type="text" ng-checked="!typeText" [(ngModel)]="filter" (keyup)="doFilter($event.target.value)"
+      placeholder="Filter">
   </mat-form-field>
 
-  <button mat-icon-button (click)="filterFavorites($event.target.value)">
+  <button mat-icon-button (click)="filterFavorites($event.target.value)"
+    title="{{(favoritesFilter===false?'Filter by Favorites':'Filter by Non-Favorites')}}">
     <mat-icon class="favoriteStar">{{(favoritesFilter==true)?'star':'star_border'}}</mat-icon>
   </button>
 
-  <button mat-icon-button (click)="clearFilter()">
+  <button mat-icon-button (click)="clearFilter()" title="Clear Filter">
     <mat-icon class="clearFilter">close</mat-icon>
   </button>
 </div>
-<!--
-<div fxLayout fxLayoutAlign="center">
 
-</div> -->
+<mat-divider></mat-divider>
 
-<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" class="recipes">
-  <mat-table fxFlex="100%" fxFlex.gt-sm="80%" [dataSource]="dataSource" class="mat-elevation-z1">
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-      <mat-cell *matCellDef="let recipe">{{recipe.id}}</mat-cell>
-    </ng-container>
-    <!-- <ng-container matColumnDef="userId">
-      <mat-header-cell *matHeaderCellDef>User ID</mat-header-cell>
-      <mat-cell *matCellDef="let recipe">{{recipe.userId}}</mat-cell>
-    </ng-container> -->
-    <ng-container matColumnDef="recipeTitle">
-      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
-      <mat-cell *matCellDef="let recipe"> {{recipe.recipeTitle}}</mat-cell>
-    </ng-container>
-    <!-- <ng-container matColumnDef="ingredients">
-      <th mat-header-cell *matHeaderCellDef>Ingredients</th>
-      <td mat-cell *matCellDef="let recipe"> {{recipe.ingredients}}</td>
-    </ng-container>-->
+<mat-card-content class="grid">
+  <mat-card class="recipe-card" *ngFor="let recipe of this.dataSource.filteredData">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title class="clickable-card-title" [routerLink]="['/recipes', recipe.id]">{{recipe.recipeTitle}}</mat-card-title>
+        <mat-card-subtitle><mat-icon>timer</mat-icon> {{recipe.timeToPrepareInMinutes}} min</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ recipe.linkToImage }}" alt="Photo unavailable">
+    <mat-card-content>
+      <p>Cautions:
+        {{recipe.cautions}}
+      </p>
+      <p>Health Labels:
+        {{recipe.healthLabels}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button (click)="toggleFavorite(recipe)" title="Save to Favorites">
+        <mat-icon class="favoriteStar">{{(recipe.isFavorite==true)?'star':'star_border'}}</mat-icon>
+      </button>
 
-    <ng-container matColumnDef="timeToPrepareInMinutes">
-      <mat-header-cell *matHeaderCellDef>Time to Prepare (Minutes)</mat-header-cell>
-      <mat-cell *matCellDef="let recipe"> {{recipe.timeToPrepareInMinutes}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="calories">
-      <mat-header-cell *matHeaderCellDef>Calories</mat-header-cell>
-      <mat-cell *matCellDef="let recipe"> {{recipe.calories}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="cautions">
-      <mat-header-cell *matHeaderCellDef>Cautions</mat-header-cell>
-      <mat-cell *matCellDef="let recipe"> {{recipe.cautions}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="nutritionalValue">
-      <mat-header-cell *matHeaderCellDef>Nutritional Value</mat-header-cell>
-      <mat-cell *matCellDef="let recipe"> {{recipe.nutritionalValue}}</mat-cell>
-    </ng-container>
+      <button mat-icon-button [routerLink]="['/recipes', recipe.id]" title="Details">
+        <mat-icon>reorder</mat-icon>
+      </button>
 
-    <ng-container matColumnDef="isFavorite">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <button mat-icon-button color="warn" (click)="deleteRecipe(recipe.id)" title="Delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</mat-card-content>
 
-      <mat-cell *matCellDef="let recipe">
-        <button mat-icon-button (click)="toggleFavorite(recipe)">
-          <mat-icon class="favoriteStar">{{(recipe.isFavorite==true)?'star':'star_border'}}</mat-icon>
-        </button>
-    </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef>Details</mat-header-cell>
-      <mat-cell *matCellDef="let recipe">
-        <button mat-icon-button [routerLink]="['/recipes', recipe.id]" >
-          <mat-icon>reorder</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="delete">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let recipe">
-        <button mat-icon-button color="warn" (click)="deleteRecipe(recipe.id)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"
-      class="element-row" ></mat-row>
-
-  </mat-table>
-
-  <div class="loading" *ngIf="loading">
-    <mat-spinner></mat-spinner>
-  </div>
+<div class="loading" *ngIf="loading">
+  <mat-spinner></mat-spinner>
 </div>
 
+<div class="footer">
 
+  <p>Footer</p>
+</div>

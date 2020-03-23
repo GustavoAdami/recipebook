@@ -1,0 +1,54 @@
+<div class="container">
+  <mat-dialog-content>
+
+  <h2>{{fromPage.label}}</h2>
+
+  <img src="{{ fromPage.image }}">
+
+  <br />
+  <label>Found at:
+    <a href="{{ fromPage.url }}">{{ fromPage.source }}</a>
+  </label>
+
+  <br />
+  <br />
+  <label>Diet Labels:
+    <textarea id="dietLabels" [(ngModel)]="fromPage.dietLabels" name="dietLabels" style="height:200px"></textarea>
+  </label>
+
+  <label>Health Labels:
+    <textarea id="healthLabels" [(ngModel)]="fromPage.healthLabels" name="healthLabels" style="height:200px"></textarea>
+  </label>
+
+  <label>Cautions:
+    <textarea id="cautions" [(ngModel)]="fromPage.cautions" name="healthLabels" style="height:200px"></textarea>
+  </label>
+
+  <label>Ingredients:
+    <textarea id="ingredientLines" [(ngModel)]="fromPage.ingredientLines" name="ingredientLines"
+      style="height:200px"></textarea>
+  </label>
+
+  <!-- <input type="text" *ngFor="let ingredient of fromPage.ingredientLines; let i = index" name="ingredient{{i}}" [(ngModel)]="ingredient"> -->
+
+  <label>Calories:
+    <input type="text" [(ngModel)]="fromPage.calories" required>
+  </label>
+
+  <label>Time To Prepare:
+    <input type="text" [(ngModel)]="fromPage.totalTime" required>
+  </label>
+
+  <div>
+    <mat-dialog-actions>
+
+    <button mat-flat-button color="primary" (click)="saveRecipe()">Save Recipe</button>
+    <button mat-flat-button color="warn" (click)="closeDialog()">Cancel</button>
+  </mat-dialog-actions>
+
+  </div>
+
+</mat-dialog-content>
+
+
+</div>

@@ -14,12 +14,17 @@ import {
   MatDialogModule,
   MatDialogRef,
   MatInputModule,
-  MatFormFieldControl
+  MatFormFieldControl,
+  MatCardModule,
+  MatGridListModule,
+  MatPaginatorModule,
+  PageEvent
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OktaAuthModule } from '@okta/okta-angular';
 // import {DialogService} from './services/dialog.service';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +34,7 @@ import { MealPlannerComponent } from './meal-planner/meal-planner.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipeComponent, TesteDeArray } from './recipe/recipe.component';
 import { GNETComponent } from './gnet/gnet.component';
+import { RecipeCarouselComponent } from './recipe-carousel/recipe-carousel.component';
 
 
 @NgModule({
@@ -40,7 +46,8 @@ import { GNETComponent } from './gnet/gnet.component';
     RecipeComponent,
     TesteDeArray,
     DialogComponent,
-    GNETComponent
+    GNETComponent,
+    RecipeCarouselComponent
   ],
   imports: [
     AppRoutingModule,
@@ -48,6 +55,8 @@ import { GNETComponent } from './gnet/gnet.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
+    MatCardModule,
+    MatGridListModule,
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
@@ -55,12 +64,14 @@ import { GNETComponent } from './gnet/gnet.component';
     MatTableModule,
     MatDividerModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
     OktaAuthModule.initAuth({
       issuer: 'https://dev-810851.okta.com/oauth2/default',
-      redirectUri: 'http://192.168.0.25:4200/implicit/callback',
+      redirectUri: 'http://localhost:4200/implicit/callback',
       clientId: '0oa1a9g8grSMSPfQp4x6'
     }),
     FormsModule,
+    MatCarouselModule.forRoot(),
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,

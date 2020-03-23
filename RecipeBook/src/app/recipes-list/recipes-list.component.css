@@ -27,11 +27,6 @@
     min-width: 300px;
   }
 
-  /* .element-row {
-    position: relative;
-    /* cursor: pointer;
-  } */
-
   .element-row:hover {
     background: #f5f5f5;
   }
@@ -44,3 +39,41 @@
   .favoriteStar {
     color: orange;
   }
+
+  .example-header-image {
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    /* background-image: url('../../../RecipeBookLogo_2.png'); */
+    background-image: url('../../../RecipeBookLogoToolbar.png');
+
+    background-size: cover;
+  }
+
+  .img {
+    max-width: 300px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 20px;
+    /* padding-left: 10px; */
+    /* padding-right: 10px; */
+    align-items: stretch;
+    margin: 10px 10px 10px 10px;
+
+  }
+
+  /* .recipe-card {
+
+  } */
+
+  .clickable-card-title:hover {
+    cursor: pointer;
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+
+  }
+
+  /* .footer {
+    bottom: auto;
+    position: fixed;
+  } */

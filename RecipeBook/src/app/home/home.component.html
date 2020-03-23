@@ -1,8 +1,10 @@
 <div class="searchRecipe">
-  <h1>Recipe Book</h1>
-  <p>Let's cook something!</p>
+  <h1>Welcome to</h1>
+  <img class="logoImg" src="../../../RecipeBookLogo_2.1.png" alt="Photo unavailable" title="Home page of Recipe Book">
 
-  <h2>Find new recipes and get cooking!</h2>
+  <!-- <p>Let's cook something!</p> -->
+
+  <h2>What do you want to cook?</h2>
 
   <input type="text" [(ngModel)]="ingredientToSearch" (keyup.enter)="searchRecipeByIngredient(ingredientToSearch)"
     placeholder="Search recipe by ingredient on Edaman API" size="50" required>
@@ -13,20 +15,20 @@
   <label>Diet Label</label>
   <select name="diet" [(ngModel)]="dietLabel" ngDefaultControl>
     <option disabled selected value> -- Select an option -- </option>
-    <option value=balanced>Balanced</option>
-    <option value=high-fiber>High Fiber</option>
-    <option value=high-protein>High Protein</option>
-    <option value=low-carb>Low Carb</option>
-    <option value=low-fat>Low Fat</option>
-    <option value=low-sodium>Low Sodium</option>
+    <option *ngFor="let dietLabel of dietLabelsEdamam" [value]=dietLabel.value>{{dietLabel.text}}</option>
 
   </select>
 
+  <label>Health Label</label>
+  <select name="healthLabels" [(ngModel)]="healthLabels" ngDefaultControl>
+    <option disabled selected value> -- Select an option -- </option>
+    <option *ngFor="let healthLabel of healthLabelsEdamam" [value]=healthLabel.value>{{healthLabel.text}}</option>
+  </select>
   <br />
   <br />
 
   <button mat-flat-button color="primary" (click)="searchRecipeByIngredient(ingredientToSearch)"> Search </button>
-  <button mat-flat-button color="accent" (click)="clearSearchParams()"> New search</button>
+  <button mat-flat-button color="warn" (click)="clearSearchParams()"> New search</button>
 
   <div class="loading" *ngIf="loading">
     <mat-spinner></mat-spinner>
@@ -36,50 +38,36 @@
 
 <br />
 
-<div class="recipes" *ngIf="dataSource.data.length>0" fxLayout="row" fxLayout.xs="column"
-  fxLayoutAlign="space-between stretch" class="recipesFound">
-  <mat-table fxFlex="100%" fxFlex.gt-sm="70%" [dataSource]="dataSource" class="mat-elevation-z1">
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
-      <mat-cell *matCellDef="let recipe">{{recipe.label}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="calories">
-      <mat-header-cell *matHeaderCellDef>Calories</mat-header-cell>
-      <mat-cell *matCellDef="let recipe">{{recipe.calories}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="cautions">
-      <mat-header-cell *matHeaderCellDef>Caution</mat-header-cell>
-      <mat-cell *matCellDef="let recipe">{{recipe.cautions}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="dietLabels">
-      <mat-header-cell *matHeaderCellDef>Diet Labels</mat-header-cell>
-      <mat-cell *matCellDef="let recipe">{{recipe.dietLabels}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="healthLabels">
-      <mat-header-cell *matHeaderCellDef>Health Labels</mat-header-cell>
-      <mat-cell *matCellDef="let recipe">{{recipe.healthLabels}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="totalTime">
-      <mat-header-cell *matHeaderCellDef>Total Time</mat-header-cell>
-      <mat-cell *matCellDef="let recipe">{{recipe.totalTime}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef>Details</mat-header-cell>
-      <mat-cell *matCellDef="let recipe">
-        <button mat-icon-button (click)="showDialog(recipe)">
+<div>
+  <mat-card-content class="grid">
+    <mat-card class="recipe-card" *ngFor="let recipe of this.dataSource.filteredData">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title class="clickable-card-title" (click)="showDialog(recipe)">{{recipe.label}}</mat-card-title>
+        <mat-card-subtitle>{{recipe.timeToPrepareInMinutes}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{ recipe.image }}" alt="Photo unavailable">
+      <mat-card-content>
+        <p>Cautions:
+          {{recipe.cautions}}
+        </p>
+        <p>Health Labels:
+          {{recipe.healthLabels}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button (click)="showDialog(recipe)" title="Details">
           <mat-icon>reorder</mat-icon>
         </button>
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"></mat-row>
-
-  </mat-table>
+      </mat-card-actions>
+    </mat-card>
+  </mat-card-content>
 
 </div>
 
-<div class="hero">
+<app-recipe-carousel></app-recipe-carousel>
+
+<!-- <div class="hero">
   <div class="boarder">
     <div class="recommended_recipe">
 
@@ -105,4 +93,4 @@
     </div>
 
   </div>
-</div>
+</div> -->

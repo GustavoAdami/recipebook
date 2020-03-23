@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Router} from "@angular/router";
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { RecipesListService } from './recipes-list.service';
 import { Recipe } from './recipe';
@@ -18,7 +20,7 @@ export class RecipesListComponent implements OnInit {
   selectedRecipe: Recipe = new Recipe();
   loading = false;
 
-  favoritesFilter = false;
+  favoritesFilter: boolean;
   filter: string;
 
   // typeOfFilter: boolean;
