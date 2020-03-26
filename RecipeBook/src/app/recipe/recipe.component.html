@@ -47,7 +47,6 @@
     <textarea id="howToPrepare" [(ngModel)]="recipe.howToPrepare" name="howToPrepare" style="height:200px"></textarea>
   </label>
 
-
   <label>Nutritional Value
     <input type="text" [(ngModel)]="recipe.nutritionalValue">
   </label>
@@ -58,6 +57,11 @@
   <!-- <button mat-flat-button color="primary" (click)="updateRecipe()">Create</button> -->
   <button mat-flat-button color="primary"
     (click)="updateRecipe()">{{(recipe.id!==undefined)?'Update':'Create'}}</button>
+
+    <div *ngIf="recipe.id!==undefined">
+      <button mat-flat-button color="primary">Add to Weekly Planner (TODO)</button>
+    </div>
+
 
   <button mat-flat-button color="warn" (click)="clearRecipe()">Cancel</button>
   <div class="loading" *ngIf="loading">

@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit{
     // new ValueAndText("egg-free", "Eggs"),
     // new ValueAndText("fish-free", "Fish"),
     // new ValueAndText("fodmap-free", "FODMAP free"),
-    // new ValueAndText("gluten-free", "Gluten-free"),
+    new ValueAndText("gluten-free", "Gluten-free"),
     // new ValueAndText("keto-friendly", "Keto"),
     // new ValueAndText("kidney-friendly", "Kidney friendly"),
     // new ValueAndText("kosher", "Kosher"),
@@ -90,6 +90,8 @@ export class HomeComponent implements OnInit{
 
   async searchRecipeByIngredient(ingredient: string) {
     // this.refresh();
+    // this.dataSource = new MatTableDataSource<any>();
+
     this.loading = true;
     try {
       console.log('Health label: ' + this.healthLabels);
@@ -103,6 +105,14 @@ export class HomeComponent implements OnInit{
         this.loading = false;
         return;
       }
+
+      if(this.healthLabels == 'gluten-free'){
+        ingredient += ' gluten-free';
+        this.healthLabels = '';
+      }
+
+      // alert('Ingredient ' + ingredient);
+
 
       var recipesFoundJson = await this.homeService.searchRecipeByIngredient(ingredient, this.dietLabel, this.healthLabels);
     } catch (err) {

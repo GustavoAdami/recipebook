@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarouselModule, WavesModule } from 'angular-bootstrap-md'
+// import { CarouselModule, WavesModule } from 'angular-bootstrap-md'
 
 
 // import { OverlayContainer } from '@angular/cdk/overlay';

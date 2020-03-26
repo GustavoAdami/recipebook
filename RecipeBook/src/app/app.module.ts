@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OktaAuthModule } from '@okta/okta-angular';
 // import {DialogService} from './services/dialog.service';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -53,6 +54,7 @@ import { RecipeCarouselComponent } from './recipe-carousel/recipe-carousel.compo
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    DragDropModule,
     HttpClientModule,
     FlexLayoutModule,
     MatCardModule,
