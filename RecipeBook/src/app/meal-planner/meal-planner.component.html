@@ -1,195 +1,169 @@
-<!-- <div class="example-container">
-  <h2>To do</h2>
-
-  <div
-    cdkDropList
-    #todoList="cdkDropList"
-    [cdkDropListData]="todo"
-    [cdkDropListConnectedTo]="[doneList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
-  </div>
-</div>
-
-<div class="example-container">
-  <h2>Done</h2>
-
-  <div
-    cdkDropList
-    #doneList="cdkDropList"
-    [cdkDropListData]="done"
-    [cdkDropListConnectedTo]="[todoList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-  </div>
-</div> -->
-
-
 <h1>{{ title }}</h1>
-
 
 <div>
 
-<div class='planner' cdkDropListGroup fxFlex="100%">
-  <div class="meal-types">
-    <h2>Meal</h2>
-    <!-- <div
-      cdkDropList
-      #mealsTypes="cdkDropList"
-      [cdkDropListData]="mealsTypes"
-      class="example-list"
-      handle="true"
-      (cdkDropListDropped)="drop($event)"> -->
+  <div class='planner' cdkDropListGroup>
+    <div align="center">
+    <div class="meal-types">
+      <h2>Meal</h2>
+      <div class="example-box" *ngFor="let mealType of mealsTypes">{{mealType}}</div>
+    </div>
 
-    <div class="example-box" *ngFor="let mealType of mealsTypes" cdkDrag [cdkDragDisabled]="true">{{mealType}}</div>
-  <!-- </div> -->
-</div>
+    <div class="example-container">
+      <h2>Monday</h2>
 
-  <div class="example-container">
-    <h2>Monday</h2>
+      <div
+        cdkDropList
+        #monday="cdkDropList"
+        [cdkDropListData]="mondayRecipes"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
 
-    <div
-      cdkDropList
-      #monday="cdkDropList"
-      [cdkDropListData]="mondayRecipes"
-      class="example-list"
-      handle="true"
-      (cdkDropListDropped)="drop($event)">
-
-      <div class="example-box" *ngFor="let item of mondayRecipes; let i = index" cdkDrag>
-        {{item.recipeTitle}}
-        <mat-icon class="deleteItem" (click)="removeItem($event, i)">close</mat-icon>
+        <div class="example-box" *ngFor="let item of mondayRecipes; let i = index" cdkDrag>
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          {{item.recipeTitle||item}}
+          <img *cdkDragPreview [src]="item.linkToImage" [alt]="item.recipeTitle">
+          <mat-icon *ngIf="item!=''" class="deleteItem" (click)="removeItem(mondayRecipes, i)">close</mat-icon>
+        </div>
       </div>
     </div>
+
+    <div class="example-container">
+      <h2>Tuesday</h2>
+
+      <div
+        cdkDropList
+        #tuesday="cdkDropList"
+        [cdkDropListData]="tuesdayRecipes"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+
+        <div class="example-box" *ngFor="let item of tuesdayRecipes; let i = index" cdkDrag>
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          {{item.recipeTitle||item}}
+          <img *cdkDragPreview [src]="item.linkToImage" [alt]="item.recipeTitle">
+          <mat-icon *ngIf="item!=''" class="deleteItem" (click)="removeItem(tuesdayRecipes, i)">close</mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Wednesday</h2>
+
+      <div
+        cdkDropList
+        #wednesday="cdkDropList"
+        [cdkDropListData]="wednesdayRecipes"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+
+        <div class="example-box" *ngFor="let item of wednesdayRecipes; let i = index" cdkDrag>
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          {{item.recipeTitle||item}}
+          <img *cdkDragPreview [src]="item.linkToImage" [alt]="item.recipeTitle">
+          <mat-icon *ngIf="item!=''" class="deleteItem" (click)="removeItem(wednesdayRecipes, i)">close</mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Thursday</h2>
+
+      <div
+        cdkDropList
+        #thursday="cdkDropList"
+        [cdkDropListData]="thursdayRecipes"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+
+        <div class="example-box" *ngFor="let item of thursdayRecipes; let i = index" cdkDrag>
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          {{item.recipeTitle||item}}
+          <img *cdkDragPreview [src]="item.linkToImage" [alt]="item.recipeTitle">
+          <mat-icon *ngIf="item!=''" class="deleteItem" (click)="removeItem(thursdayRecipes, i)">close</mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Friday</h2>
+
+      <div
+        cdkDropList
+        #friday="cdkDropList"
+        [cdkDropListData]="fridayRecipes"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+
+        <div class="example-box" *ngFor="let item of fridayRecipes; let i = index" cdkDrag>
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          {{item.recipeTitle||item}}
+          <img *cdkDragPreview [src]="item.linkToImage" [alt]="item.recipeTitle">
+          <mat-icon *ngIf="item!=''" class="deleteItem" (click)="removeItem(fridayRecipes, i)">close</mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Saturday</h2>
+
+      <div
+        cdkDropList
+        #saturday="cdkDropList"
+        [cdkDropListData]="saturdayRecipes"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+
+        <div class="example-box" *ngFor="let item of saturdayRecipes; let i = index" cdkDrag>
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          {{item.recipeTitle||item}}
+          <img *cdkDragPreview [src]="item.linkToImage" [alt]="item.recipeTitle">
+          <mat-icon *ngIf="item!=''" class="deleteItem" (click)="removeItem(saturdayRecipes, i)">close</mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Sunday</h2>
+
+      <div
+        cdkDropList
+        #sunday="cdkDropList"
+        [cdkDropListData]="sundayRecipes"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+
+        <div class="example-box" *ngFor="let item of sundayRecipes; let i = index" cdkDrag>
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          {{item.recipeTitle||item}}
+          <img *cdkDragPreview [src]="item.linkToImage" [alt]="item.recipeTitle">
+          <mat-icon *ngIf="item!=''" class="deleteItem" (click)="removeItem(sundayRecipes, i)">close</mat-icon>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="example-container">
-    <h2>Tuesday</h2>
+  <!-- </div> -->
+    <h1>My Recipe Book</h1>
+    <h2>Drag and drop the recipes at the Day / Meal desired</h2>
+<!-- <br />
+<br />
+<br /> -->
 
     <div
-      cdkDropList
-      #tuesday="cdkDropList"
-      [cdkDropListData]="tuesdayRecipes"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of tuesdayRecipes" cdkDrag>{{item.recipeTitle}}</div>
+        cdkDropList
+        #myrecipes="cdkDropList"
+        [cdkDropListData]="listOfRecipes"
+        cdkDropListSortingDisabled
+        class="recipeBook"
+        (cdkDropListDropped)="drop($event)">
+        <div class="imgPreview" *ngFor="let item of dataSource.data" cdkDrag>
+          {{item.recipeTitle}}
+            <img class="imgPreview" src="{{ item.linkToImage }}" title="{{ item.recipeTitle }}" alt="{{ item.recipeTitle }}">
+        </div>
     </div>
+
   </div>
 
-
-
-
-  <div class="example-container">
-    <h2>Wednesday</h2>
-
-    <div
-      cdkDropList
-      #wednesday="cdkDropList"
-      [cdkDropListData]="wednesdayRecipes"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of wednesdayRecipes" cdkDrag>{{item.recipeTitle}}</div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h2>Thursday</h2>
-
-    <div
-      cdkDropList
-      #thursday="cdkDropList"
-      [cdkDropListData]="thursdayRecipes"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of thursdayRecipes" cdkDrag>{{item.recipeTitle}}</div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h2>Friday</h2>
-
-    <div
-      cdkDropList
-      #friday="cdkDropList"
-      [cdkDropListData]="fridayRecipes"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of fridayRecipes" cdkDrag>{{item.recipeTitle}}</div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h2>Saturday</h2>
-
-    <div
-      cdkDropList
-      #saturday="cdkDropList"
-      [cdkDropListData]="saturdayRecipes"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of saturdayRecipes" cdkDrag>{{item.recipeTitle}}</div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h2>Sunday</h2>
-
-    <div
-      cdkDropList
-      #sunday="cdkDropList"
-      [cdkDropListData]="sundayRecipes"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of sundayRecipes" cdkDrag>{{item.recipeTitle}}</div>
-    </div>
-  </div>
-
-<mat-divider [vertical]="true"></mat-divider>
-
-<div class="example-container">
-  <h2>My Recipe Book</h2>
-
-  <div
-    cdkDropList
-    #myrecipes="cdkDropList"
-    [cdkDropListData]="dataSource.data"
-    cdkDropListSortingDisabled
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of dataSource.data" cdkDrag>{{item.recipeTitle}}</div>
-  </div>
 </div>
-
-<!-- <div class="example-container" fxFlex="20%"> -->
-  <!-- <h2>My Recipe Book</h2>
-
-  <div
-    cdkDropList
-    #myrecipes="cdkDropList"
-    class="example-list"
-    [cdkDropListData]="dataSource.data"
-    (cdkDropDropped)="drop($event)">
-
-    <div class="example-box" *ngFor="let item of dataSource.data" cdkDrag>{{ item.recipeTitle }}</div>
-
-  </div> -->
-
-<!-- </div> -->
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- Copyright 2019 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license -->
