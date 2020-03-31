@@ -34,9 +34,6 @@ import { HomeComponent, DialogComponent } from './home/home.component';
 import { MealPlannerComponent } from './meal-planner/meal-planner.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipeComponent, TesteDeArray } from './recipe/recipe.component';
-import { GNETComponent } from './gnet/gnet.component';
-import { RecipeCarouselComponent } from './recipe-carousel/recipe-carousel.component';
-
 
 @NgModule({
   declarations: [
@@ -47,8 +44,6 @@ import { RecipeCarouselComponent } from './recipe-carousel/recipe-carousel.compo
     RecipeComponent,
     TesteDeArray,
     DialogComponent,
-    GNETComponent,
-    RecipeCarouselComponent
   ],
   imports: [
     AppRoutingModule,

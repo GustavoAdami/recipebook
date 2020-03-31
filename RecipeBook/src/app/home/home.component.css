@@ -93,3 +93,7 @@
       background-image: url('../../../RecipeBookLogo_2.1.png');
 
     }
+
+    .buttons {
+      margin: 10px;
+    }

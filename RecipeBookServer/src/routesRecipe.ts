@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response, Router } from 'express';
-import { getRecipeRepository,  Recipe } from './model';
+import { getRecipeRepository,  Recipe } from './modelRecipe';
 import { isBoolean } from 'util';
 // import {getMongoRepository, getMongoManager} from "typeorm";
 // import { OktaAuthService } from '@okta/okta-angular';

@@ -5,7 +5,6 @@ import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
 import { MealPlannerComponent } from './meal-planner/meal-planner.component';
 import { RecipeComponent } from './recipe/recipe.component';
-import { GNETComponent } from './gnet/gnet.component';
 
 const routes: Routes = [
   {
@@ -31,11 +30,6 @@ const routes: Routes = [
   {
     path: 'weeklyplanner',
     component: MealPlannerComponent,
-    canActivate: [OktaAuthGuard]
-  },
-  {
-    path: 'gnet',
-    component: GNETComponent,
     canActivate: [OktaAuthGuard]
   },
   {

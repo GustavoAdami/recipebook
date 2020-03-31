@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDrag, CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem } from '@angular/cdk/drag-drop';
 import { MatTableDataSource } from '@angular/material';
-
+import { MealPlanner } from './meal-planner';
 import { RecipesListService } from '../recipes-list/recipes-list.service';
-import { compileNgModule } from '@angular/compiler';
-
+import { MealPlannerService } from './meal-planner.service';
 
 @Component({
   selector: 'app-meal-planner',
@@ -16,10 +15,29 @@ export class MealPlannerComponent implements OnInit {
   title = "Meal Planner";
   dataSource = new MatTableDataSource<any>();
 
-  constructor(public recipeService: RecipesListService) { }
+  listOfRecipes = [];
+
+  mealsTypes = ['Breakfast', 'Lunch', 'Dessert', 'Dinner', 'Supper'];
+
+  mondayRecipes = ['', '', '', '', ''];
+
+  tuesdayRecipes = ['', '', '', '', ''];
+
+  wednesdayRecipes = ['', '', '', '', ''];
+
+  thursdayRecipes = ['', '', '', '', ''];
+
+  fridayRecipes = ['', '', '', '', ''];
+
+  saturdayRecipes = ['', '', '', '', ''];
+
+  sundayRecipes = ['', '', '', '', ''];
+
+  constructor(public recipeService: RecipesListService, public mealPlannerService: MealPlannerService) { }
 
   ngOnInit() {
     this.refresh();
+    this.loadMealPlanner();
   }
 
   async refresh() {
@@ -27,54 +45,6 @@ export class MealPlannerComponent implements OnInit {
     this.dataSource.data = data;
     this.putToList();
   }
-
-  putToList() {
-    this.listOfRecipes = [];
-
-    this.dataSource.data.forEach(element => {
-      // console.log(element.recipeTitle);
-      this.listOfRecipes.push(element.recipeTitle);
-
-    });
-  }
-
-  listOfRecipes = [];
-
-  mealsTypes = [
-    'Breakfast',
-    'Lunch',
-    'Dessert',
-    'Dinner',
-    'Supper'
-  ];
-
-  mondayRecipes = [
-    '', '', '', '', ''
-  ];
-
-  tuesdayRecipes = [
-    '', '', '', '', ''
-  ];
-
-  wednesdayRecipes = [
-    '', '', '', '', ''
-  ];
-
-  thursdayRecipes = [
-    '', '', '', '', ''
-  ];
-
-  fridayRecipes = [
-    '', '', '', '', ''
-  ];
-
-  saturdayRecipes = [
-    '', '', '', '', ''
-  ];
-
-  sundayRecipes = [
-    '', '', '', '', ''
-  ];
 
   drop(event: CdkDragDrop<string[]>) {
 
@@ -115,8 +85,74 @@ export class MealPlannerComponent implements OnInit {
 
   }
 
+  putToList() {
+    this.listOfRecipes = [];
+
+    this.dataSource.data.forEach(element => {
+      // console.log(element.recipeTitle);
+      this.listOfRecipes.push(element.recipeTitle);
+
+    });
+  }
+
   removeItem(array, i) {
     array[i] = '';
   }
+
+  clearPlanner() {
+    if (confirm('Are you sure you want to clear the Meal Planner?')) {
+      this.mondayRecipes = ['', '', '', '', ''];
+
+      this.tuesdayRecipes = ['', '', '', '', ''];
+
+      this.wednesdayRecipes = ['', '', '', '', ''];
+
+      this.thursdayRecipes = ['', '', '', '', ''];
+
+      this.fridayRecipes = ['', '', '', '', ''];
+
+      this.saturdayRecipes = ['', '', '', '', ''];
+
+      this.sundayRecipes = ['', '', '', '', ''];
+    }
+  }
+
+  savePlanner() {
+    // let jsonMonday = JSON.parse(this.mondayRecipes.toString)
+    let mealPlanner = new MealPlanner();
+
+    mealPlanner.mondayRecipes = this.mondayRecipes.toString();
+    mealPlanner.tuesdayRecipes = this.tuesdayRecipes.toString();
+    mealPlanner.wednesdayRecipes = this.wednesdayRecipes.toString();
+    mealPlanner.thursdayRecipes = this.thursdayRecipes.toString();
+    mealPlanner.fridayRecipes = this.fridayRecipes.toString();
+    mealPlanner.saturdayRecipes = this.saturdayRecipes.toString();
+    mealPlanner.sundayRecipes = this.sundayRecipes.toString();
+
+    this.mealPlannerService.saveMealPlanner(mealPlanner);
+
+  }
+
+  buildJson(dayOfWeek: any[]) {
+
+  }
+
+  loadMealPlanner() {
+    let mealPlanner = this.mealPlannerService.getMealPlanner();
+    mealPlanner.then(element => {
+      if (element !== undefined && element != null) {
+
+        this.mondayRecipes = element.mondayRecipes.split(",");
+        this.tuesdayRecipes = element.tuesdayRecipes.split(",");
+        this.wednesdayRecipes = element.wednesdayRecipes.split(",");
+        this.thursdayRecipes = element.thursdayRecipes.split(",");
+        this.fridayRecipes = element.fridayRecipes.split(",");
+        this.saturdayRecipes = element.saturdayRecipes.split(",");
+        this.sundayRecipes = element.sundayRecipes.split(",");
+      }
+    });
+
+  }
+
 
 }

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, createConnection, Connection, Repository, PrimaryColumn, Generated } from 'typeorm';
-// var mongoose = require('mongoose'); 
+// var mongoose = require('mongoose');
 
 @Entity()
 export class Recipe {
@@ -61,6 +61,7 @@ let connection: Connection;
 export async function getRecipeRepository(): Promise<Repository<Recipe>> {
   if (connection === undefined) {
     connection = await createConnection({
+      name: 'dbConnRecipe',
       type: 'sqlite',
       database: 'recipebooksqldb',
       synchronize: true,

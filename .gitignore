@@ -34,6 +34,9 @@ yarn-error.log
 testem.log
 /typings
 /recipebooksqldb
+/mealplannersqldb
+recipebooksqldb
+mealplannersqldb
 
 # System Files
 .DS_Store

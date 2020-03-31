@@ -27,8 +27,8 @@
   <br />
   <br />
 
-  <button mat-flat-button color="primary" (click)="searchRecipeByIngredient(ingredientToSearch)"> Search </button>
-  <button mat-flat-button color="warn" (click)="clearSearchParams()"> New search</button>
+  <button class="buttons" mat-flat-button color="primary" (click)="searchRecipeByIngredient(ingredientToSearch)"> Search </button>
+  <button class="buttons" mat-flat-button color="warn" (click)="clearSearchParams()"> New search</button>
 
   <div class="loading" *ngIf="loading">
     <mat-spinner></mat-spinner>
