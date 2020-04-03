@@ -1,4 +1,9 @@
-/* https://www.w3schools.com/howto/howto_css_responsive_form.asp */
+/**
+ *  Author:         Gustavo Aquino Adami dos Santos
+ *  Course:         CST8334 - Software Development Project
+ *  File:           recipe.component.css
+ *  Summary:        CSS for Recipe Page
+ */
 
 .ng-valid[required], .ng-valid.required  {
   border-left: 5px solid #42A948; /* green */

@@ -1,4 +1,10 @@
 "use strict";
+/**
+ *  Author:         Tam Nhan
+ *  Course:         CST8334 - Software Development Project
+ *  File:           auth.ts
+ *  Summary:        Implements authentication/authorization behaviour using Okta
+ */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -8,7 +14,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// import { OktaAuthService } from '@okta/okta-angular';
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 const oktaJwtVerifier = new OktaJwtVerifier({
     issuer: 'https://dev-810851.okta.com/oauth2/default',

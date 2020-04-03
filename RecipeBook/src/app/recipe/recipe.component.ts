@@ -1,3 +1,10 @@
+/**
+ *  Author:         Gustavo Aquino Adami dos Santos
+ *  Course:         CST8334 - Software Development Project
+ *  File:           recipe.component.ts
+ *  Summary:        Implements behaviours of Recipe Screen
+ */
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Recipe } from '../recipes-list/recipe';
@@ -7,8 +14,6 @@ import {Location} from '@angular/common';
 import { FormControl, FormGroup, FormArray, FormBuilder, ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import { OktaAuthService } from '@okta/okta-angular';
 
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
@@ -17,31 +22,17 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 export class RecipeComponent implements OnInit {
   recipe: Recipe = new Recipe();
   form: FormGroup;
-  // ingredientsInArray: string[];
-  // ingredientBeingAdded: string;
 
-  constructor(private recipeService: RecipesListService, private route: ActivatedRoute, private router: Router, private _location: Location, private fb: FormBuilder, private oktaAuth: OktaAuthService) {
-
-  }
+  constructor(private recipeService: RecipesListService, private route: ActivatedRoute, private router: Router, private _location: Location, private fb: FormBuilder, private oktaAuth: OktaAuthService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       if(params.has('id')){
         this.recipeService.getRecipe(Number.parseInt(params.get('id'))).then(r =>{
           this.recipe = r;
-          // this.ingredientsInArray = this.recipe.ingredients.split(',')
-        })
+        });
       }
     });
-
-  }
-
-  addCreds() {
-    const creds = this.form.controls.credentials as FormArray;
-    creds.push(this.fb.group({
-      username: '',
-      password: '',
-    }));
   }
 
   async updateRecipe(){
@@ -50,71 +41,33 @@ export class RecipeComponent implements OnInit {
 		} else {
       this.recipe.userId = (await this.oktaAuth.getUser()).email;
 
+      if(this.recipe.recipeTitle === undefined || this.recipe.recipeTitle === null || this.recipe.recipeTitle == ''){
+        alert('Recipe Title cannot be empty - Please try again');
+        return;
+      }
+
+      if(this.recipe.timeToPrepareInMinutes === undefined || this.recipe.timeToPrepareInMinutes === null || this.recipe.timeToPrepareInMinutes == 0){
+        alert('Time to Prepare cannot be empty - Please try again');
+        return;
+      }
+
+      if(this.recipe.ingredients === undefined || this.recipe.ingredients === null || this.recipe.ingredients == ''){
+        alert('Ingredients cannot be empty - Please try again');
+        return;
+      }
+
       await this.recipeService.createRecipe(this.recipe);
 		}
 		this.recipe = new Recipe();
     this._location.back();
-
   }
 
   clearRecipe(){
-    // if(confirm(`Are you sure you want to cancel? This cannot be undone`)){
       this._location.back();
       this.recipe = new Recipe();
-    // }
-
   }
-
-  // addIngredient(){
-  //   this.ingredientsInArray.push('');
-  //   // this.recipe.ingredients += "|" + this.ingredientBeingAdded;
-  // }
-
-  // deleteIngredient(i: number, ingredient: string){
-  //   console.log(i);
-  //   // this.recipe.ingredients = this.recipe.ingredients.replace(new RegExp('/.n/'), '');
-  //   this.ingredientsInArray.splice(i, 1);
-  // }
 
   toggleFavorite(){
     this.recipe.isFavorite = !this.recipe.isFavorite;
-    // this.recipeService.updateRecipe(recipe);
-  }
-
-
-}
-
-@Component({
-  selector: 'my-app',
-  template: `
-    <form [formGroup]="form">
-
-        <h2>Credentials</h2>
-        <button (click)="addCreds()">Add</button>
-
-        <div formArrayName="credentials" *ngFor="let creds of form.controls.credentials?.value; let i = index">
-          <ng-container [formGroupName]="i">
-            <input placeholder="Ex: 1/2 cup of milk" formControlName="ingredient">
-          </ng-container>
-        </div>
-
-    </form>
-  `,
-})
-export class TesteDeArray  {
-  form: FormGroup;
-
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      published: true,
-      credentials: this.fb.array([]),
-    });
-  }
-
-  addCreds() {
-    const creds = this.form.controls.credentials as FormArray;
-    creds.push(this.fb.group({
-      ingredient: ''
-    }));
   }
 }

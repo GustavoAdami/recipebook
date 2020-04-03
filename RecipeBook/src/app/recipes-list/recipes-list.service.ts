@@ -1,3 +1,10 @@
+/**
+ *  Author:         Gustavo Aquino Adami dos Santos
+ *  Course:         CST8334 - Software Development Project
+ *  File:           recipe-list.service.ts
+ *  Summary:        Supporting database connection for My Recipes Page
+ */
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OktaAuthService } from '@okta/okta-angular';
@@ -11,12 +18,10 @@ const baseUrl = 'http://localhost:4201';
 export class RecipesListService {
   currentUser = this.oktaAuth.getUser();
 
-	constructor(public oktaAuth: OktaAuthService, private http: HttpClient) {
-	}
+	constructor(public oktaAuth: OktaAuthService, private http: HttpClient) { }
 
 	private async request(method: string, url: string, data?: any) {
 		const token = await this.oktaAuth.getAccessToken();
-    // console.log('request ' + JSON.stringify(data));
 
 		const result = this.http.request(method, url, {
       body: data,
@@ -25,9 +30,7 @@ export class RecipesListService {
 			headers: {
         Authorization: `Bearer ${token}`
       },
-      params: {
-        // userId: user
-      }
+      params: { }
 		});
 
 		return new Promise<any>((resolve, reject) => {
@@ -41,26 +44,17 @@ export class RecipesListService {
 
 	async getRecipe(id: number) {
 		return this.request('get', `${baseUrl}/recipes/${id}`, this.currentUser);
-
 	}
 
 	createRecipe(recipe: Recipe) {
-		console.log('createRecipe ' + JSON.stringify(recipe));
 		return this.request('post', `${baseUrl}/recipes`, recipe);
 	}
 
 	updateRecipe(recipe: Recipe) {
-		console.log('updateRecipe ' + JSON.stringify(recipe));
 		return this.request('post', `${baseUrl}/recipes/${recipe.id}`, recipe);
 	}
 
 	deleteRecipe(id: number) {
-    console.log('deleteRecipe ' + id);
 		return this.request('delete', `${baseUrl}/recipes/${id}`);
   }
-
-  getRecord(id: number){
-    console.log(id + ' cell clicked');
-  }
-
 }

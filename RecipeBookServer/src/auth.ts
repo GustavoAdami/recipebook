@@ -1,5 +1,11 @@
+/**
+ *  Author:         Tam Nhan
+ *  Course:         CST8334 - Software Development Project
+ *  File:           auth.ts
+ *  Summary:        Implements authentication/authorization behaviour using Okta
+ */
+
 import { Request, Response, NextFunction} from 'express';
-// import { OktaAuthService } from '@okta/okta-angular';
 
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 
@@ -25,4 +31,3 @@ export async function oktaAuth(req:Request, res:Response, next:NextFunction) {
       return res.status(401).send(err.message);
     }
   }
-  

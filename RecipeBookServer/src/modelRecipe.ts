@@ -1,5 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, createConnection, Connection, Repository, PrimaryColumn, Generated } from 'typeorm';
-// var mongoose = require('mongoose');
+/**
+ *  Author:         Nehemie Jibikila
+ *  Course:         CST8334 - Software Development Project
+ *  File:           modelRecipe.ts
+ *  Summary:        Database model of Recipe
+ */
+
+ import { Entity, PrimaryGeneratedColumn, Column, createConnection, Connection, Repository, PrimaryColumn, Generated } from 'typeorm';
 
 @Entity()
 export class Recipe {
@@ -45,18 +51,12 @@ export class Recipe {
   @Column({ nullable: true })
   externalLink: string;
 
-  // @Column({ nullable: true })
-  // linkToImage: string;
-
   @Column('boolean')
   @Column({ nullable: true })
   isFavorite: boolean;
-
-
 }
 
 let connection: Connection;
-
 
 export async function getRecipeRepository(): Promise<Repository<Recipe>> {
   if (connection === undefined) {

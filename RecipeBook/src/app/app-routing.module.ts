@@ -1,3 +1,10 @@
+/**
+ *  Author:         Gustavo Aquino Adami dos Santos
+ *  Course:         CST8334 - Software Development Project
+ *  File:           app-routing.module.ts
+ *  Summary:        Defines routing for pages in the application
+ */
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -37,18 +44,7 @@ const routes: Routes = [
     component: OktaCallbackComponent,
     // canActivate: [OktaAuthGuard]
   }
-  // {
-  //   path: 'recipe',
-  //   component: RecipeComponent,
-  //   // canActivate: [OktaAuthGuard]
-  // }
 ];
-
-// Require authentication on every route
-// routes.forEach(route => {
-//   route.canActivate = route.canActivate || [];
-//   route.canActivate.push(OktaAuthGuard);
-// });
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

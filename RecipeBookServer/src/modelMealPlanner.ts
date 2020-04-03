@@ -1,3 +1,10 @@
+/**
+ *  Author:         Tam Nhan
+ *  Course:         CST8334 - Software Development Project
+ *  File:           modelMealPlanner.ts
+ *  Summary:        Database model of Meal Planner
+ */
+
 import { Entity, Column, createConnection, Connection, Repository, PrimaryColumn, Generated } from 'typeorm';
 
 @Entity()
@@ -28,7 +35,6 @@ export class MealPlanner {
 }
 
 let connection: Connection;
-
 
 export async function getMealPlannerRepository(): Promise<Repository<MealPlanner>> {
   if (connection === undefined) {

@@ -1,4 +1,10 @@
 "use strict";
+/**
+ *  Author:         Nehemie Jibikila
+ *  Course:         CST8334 - Software Development Project
+ *  File:           modelRecipe.ts
+ *  Summary:        Database model of Recipe
+ */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,7 +24,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-// var mongoose = require('mongoose');
 let Recipe = class Recipe {
 };
 __decorate([

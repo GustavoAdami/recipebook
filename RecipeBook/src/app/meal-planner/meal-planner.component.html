@@ -1,4 +1,11 @@
-<h1>{{ title }}</h1>
+<!-- /**
+ *  Author:         Elyssa Emanuel
+ *  Course:         CST8334 - Software Development Project
+ *  File:           meal-planner.component.html
+ *  Summary:        Defines Meal Planner of Recipe Book
+ */ -->
+
+ <h1>{{ title }}</h1>
 
 <div>
 
@@ -141,8 +148,6 @@
         </div>
       </div>
     </div>
-
-
   </div>
 
 <div class="controlButtons">
@@ -151,12 +156,8 @@
   <button class="buttons" mat-flat-button color="warn" (click)="clearPlanner()">Clear Planner</button>
 </div>
 
-  <!-- </div> -->
     <h1>My Recipe Book</h1>
     <h2>Drag and drop the recipes at the Day / Meal desired</h2>
-<!-- <br />
-<br />
-<br /> -->
 
     <div
         cdkDropList
@@ -170,7 +171,5 @@
             <img class="imgPreview" src="{{ item.linkToImage }}" title="{{ item.recipeTitle }}" alt="{{ item.recipeTitle }}">
         </div>
     </div>
-
   </div>
-
 </div>

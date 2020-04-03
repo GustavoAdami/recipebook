@@ -1,4 +1,10 @@
 "use strict";
+/**
+ *  Author:         Nehemie Jibikila
+ *  Course:         CST8334 - Software Development Project
+ *  File:           routesMealPlanner.ts
+ *  Summary:        Implements API endpoints that connect to database
+ */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -10,8 +16,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const modelRecipe_1 = require("./modelRecipe");
-// import {getMongoRepository, getMongoManager} from "typeorm";
-// import { OktaAuthService } from '@okta/okta-angular';
 exports.router = express_1.Router();
 exports.router.get('/recipes', function (req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -56,22 +60,8 @@ exports.router.post('/recipes', function (req, res, next) {
             recipe.linkToImage = req.body.linkToImage;
             recipe.externalLink = req.body.externalLink;
             recipe.isFavorite = req.body.isFavorite == "true";
-            // console.log(`${recipe.userId}\n
-            // ${recipe.recipeTitle}\n
-            // ${recipe.ingredients}\n
-            // ${recipe.howToPrepare}\n
-            // ${recipe.timeToPrepareInMinutes}\n
-            // ${recipe.calories}\n
-            // ${recipe.nutritionalValue}\n
-            // ${recipe.additionalInfo}\n
-            // ${recipe.glutenFree}\n
-            // ${recipe.vegan}\n
-            // ${recipe.diabeticFriendly}\n
-            // ${recipe.riskOfAllergies}\n
-            // ${recipe.isFavorite}\n`);
             const result = yield recipeRepository.save(recipe);
             res.send(result);
-            // res.sendStatus(200);
         }
         catch (err) {
             return next(err);
@@ -97,19 +87,6 @@ exports.router.post('/recipes/:id', function (req, res, next) {
             recipe.linkToImage = req.body.linkToImage;
             recipe.externalLink = req.body.externalLink;
             recipe.isFavorite = JSON.parse(req.body.isFavorite);
-            // console.log(`${recipe.userId}\n
-            // ${recipe.recipeTitle}\n
-            // ${recipe.ingredients}\n
-            // ${recipe.howToPrepare}\n
-            // ${recipe.timeToPrepareInMinutes}\n
-            // ${recipe.calories}\n
-            // ${recipe.nutritionalValue}\n
-            // ${recipe.additionalInfo}\n
-            // ${recipe.glutenFree}\n
-            // ${recipe.vegan}\n
-            // ${recipe.diabeticFriendly}\n
-            // ${recipe.riskOfAllergies}\n
-            // ${recipe.isFavorite}\n`);
             const result = yield recipeRepository.save(recipe);
             res.send(result);
         }

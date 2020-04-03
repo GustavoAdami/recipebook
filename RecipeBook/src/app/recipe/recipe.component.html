@@ -1,4 +1,11 @@
-<div class="container">
+<!-- /**
+ *  Author:         Gustavo Aquino Adami dos Santos
+ *  Course:         CST8334 - Software Development Project
+ *  File:           recipe.component.html
+ *  Summary:        Recipes Page
+ */ -->
+
+ <div class="container">
   <h2>{{(recipe.id!==undefined)?recipe.recipeTitle:'Create New Recipe'}}</h2>
   <label class="favorite">Favorite
     <button mat-icon-button (click)="toggleFavorite()">
@@ -7,7 +14,7 @@
   </label>
 
   <label>Title
-    <input type="text" id="ingredientLines" [(ngModel)]="recipe.recipeTitle" name="recipeTitle" required>
+    <input type="text" id="recipeTitle" [(ngModel)]="recipe.recipeTitle" name="recipeTitle" required>
   </label>
 
   <img src="{{ recipe.linkToImage }}" alt="Photo of recipe">
@@ -38,12 +45,10 @@
     <input type="text" [(ngModel)]="recipe.calories">
   </label>
 
-  <!-- </div> -->
   <label>Time to Prepare (Minutes)
     <input type="number" [(ngModel)]="recipe.timeToPrepareInMinutes" required>
   </label>
   <label>How To Prepare
-    <!-- <input type="text" [(ngModel)]="recipe.howToPrepare" required> -->
     <textarea id="howToPrepare" [(ngModel)]="recipe.howToPrepare" name="howToPrepare" style="height:200px"></textarea>
   </label>
 
@@ -54,19 +59,11 @@
     <input type="text" [(ngModel)]="recipe.additionalInfo">
   </label>
 
-  <!-- <button mat-flat-button color="primary" (click)="updateRecipe()">Create</button> -->
   <button mat-flat-button color="primary"
     (click)="updateRecipe()">{{(recipe.id!==undefined)?'Update':'Create'}}</button>
-
-    <div *ngIf="recipe.id!==undefined">
-      <button mat-flat-button color="primary">Add to Weekly Planner (TODO)</button>
-    </div>
-
 
   <button mat-flat-button color="warn" (click)="clearRecipe()">Cancel</button>
   <div class="loading" *ngIf="loading">
     <mat-spinner></mat-spinner>
   </div>
-
 </div>
-<!-- <my-app></my-app> -->

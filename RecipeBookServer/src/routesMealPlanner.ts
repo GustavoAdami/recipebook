@@ -1,3 +1,10 @@
+/**
+ *  Author:         Tam Nhan
+ *  Course:         CST8334 - Software Development Project
+ *  File:           routesMealPlanner.ts
+ *  Summary:        Implements API endpoints that connect to database
+ */
+
 import { NextFunction, Request, Response, Router } from 'express';
 import { getMealPlannerRepository, MealPlanner } from './modelMealPlanner';
 

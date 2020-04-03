@@ -1,3 +1,10 @@
+/**
+ *  Author:         Gustavo Aquino Adami dos Santos
+ *  Course:         CST8334 - Software Development Project
+ *  File:           app-module.ts
+ *  Summary:        Compiles all imported modules into the application
+ */
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,17 +30,15 @@ import {
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OktaAuthModule } from '@okta/okta-angular';
-// import {DialogService} from './services/dialog.service';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent, DialogComponent } from './home/home.component';
 import { MealPlannerComponent } from './meal-planner/meal-planner.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
-import { RecipeComponent, TesteDeArray } from './recipe/recipe.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,6 @@ import { RecipeComponent, TesteDeArray } from './recipe/recipe.component';
     MealPlannerComponent,
     RecipesListComponent,
     RecipeComponent,
-    TesteDeArray,
     DialogComponent,
   ],
   imports: [

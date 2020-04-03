@@ -1,4 +1,10 @@
 "use strict";
+/**
+ *  Author:         Tam Nhan
+ *  Course:         CST8334 - Software Development Project
+ *  File:           routesMealPlanner.ts
+ *  Summary:        Implements API endpoints that connect to database
+ */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }

@@ -1,8 +1,14 @@
+<!-- /**
+ *  Author:         Gustavo Aquino Adami dos Santos
+ *  Course:         CST8334 - Software Development Project
+ *  File:           dialog-add-recipe.html
+ *  Summary:        Add Recipe Page
+ */ -->
+
 <h1 mat-dialog-title>Edit {{data.selectedRecipe.recipeTitle}}</h1>
 <div mat-dialog-content>
   <p>Let's add a New Recipe</p>
   <mat-form-field>
-    <!-- <mat-label>Title</mat-label> -->
     <h3><label>Title</label></h3>
     <input matInput type="text" [(ngModel)]="data.selectedRecipe.recipeTitle">
   </mat-form-field>
@@ -39,7 +45,6 @@
 
   <mat-form-field>
     <h3><label>Gluten Free</label></h3>
-    <!-- <input matInput [(ngModel)]="selectedRecipe.glutenFree" required> -->
     <select name="glutenFree" [(ngModel)]="data.selectedRecipe.glutenFree" ngDefaultControl required>
       <option disabled selected value> -- Select an option -- </option>
       <option value=true>Yes</option>
@@ -49,7 +54,6 @@
 
   <mat-form-field>
     <h3><label>Vegan</label></h3>
-    <!-- <input matInput [(ngModel)]="selectedRecipe.vegan" required> -->
     <select name="vegan" [(ngModel)]="data.selectedRecipe.vegan" ngDefaultControl required>
       <option disabled selected value> -- Select an option -- </option>
       <option value=true>Yes</option>
@@ -59,7 +63,6 @@
 
   <mat-form-field>
     <h3><label>Diabetic Friendly</label></h3>
-    <!-- <input matInput [(ngModel)]="selectedRecipe.diabeticFriendly" required> -->
     <select name="diabeticFriendly" [(ngModel)]="data.selectedRecipe.diabeticFriendly" ngDefaultControl required>
       <option disabled selected value> -- Select an option -- </option>
       <option value=true>Yes</option>
@@ -69,7 +72,6 @@
 
   <mat-form-field>
     <h3><label>Risk Of Allergies</label></h3>
-    <!-- <input matInput [(ngModel)]="selectedRecipe.riskOfAllergies" required> -->
     <select name="riskOfAllergies" [(ngModel)]="data.selectedRecipe.riskOfAllergies" required>
       <option disabled selected value> -- Select an option -- </option>
       <option value=true>Yes</option>
@@ -79,7 +81,6 @@
 
   <mat-form-field>
     <h3><label>Favorite</label></h3>
-    <!-- <input matInput [(ngModel)]="selectedRecipe.isFavorite" required> -->
     <input type="checkbox" name="isFavorite" [(ngModel)]="data.selectedRecipe.isFavorite" [ngModelOptions]="{standalone: true}">
   </mat-form-field>
 
@@ -88,7 +89,6 @@
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="data.selectedRecipe.recipeTitle" cdkFocusInitial>Ok</button>
 
-  <!-- <button mat-flat-button color="primary" (click)="updateRecipe()">Create</button> -->
   <button mat-flat-button color="primary" (click)="updateRecipe()">{{(data.selectedRecipe.id!==undefined)?'Update':'Create'}}</button>
 
   <button mat-flat-button color="primary" (click)="clearRecipe()" (click)="onNoClick()">Clear</button>

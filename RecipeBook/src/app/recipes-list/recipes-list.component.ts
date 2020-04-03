@@ -1,4 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+/**
+ *  Author:         Gustavo Aquino Adami dos Santos
+ *  Course:         CST8334 - Software Development Project
+ *  File:           recipe-list.component.ts
+ *  Summary:        Implementing behaviours of My Recipes Page
+ */
+
+ import { Component, OnInit, Inject } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Router} from "@angular/router";
@@ -23,10 +30,7 @@ export class RecipesListComponent implements OnInit {
   favoritesFilter: boolean;
   filter: string;
 
-  // typeOfFilter: boolean;
-
-  constructor(public recipeService: RecipesListService, private router: Router){
-  }
+  constructor(public recipeService: RecipesListService, private router: Router){ }
 
   ngOnInit() {
     this.refresh();
@@ -45,29 +49,19 @@ export class RecipesListComponent implements OnInit {
 
 	editRecipe(recipe: Recipe){
     this.selectedRecipe = recipe;
-    console.log('Recipe Selected ' + this.selectedRecipe);
 	}
 
 	clearRecipe(){
 		this.selectedRecipe = new Recipe();
 	}
 
-	// async deleteRecipe(recipe: Recipe){
 	async deleteRecipe(id: number){
 		this.loading = true;
 		if(confirm(`Are you sure you want to delete the recipe ? This cannot be undone`)){
-    // if(confirm(`Are you sure you want to delete the recipe ${recipe.recipeTitle}? This cannot be undone`)){
-      // this.recipeService.deleteRecipe(Number.parseInt(recipe.id));
 			this.recipeService.deleteRecipe(id);
-
 		}
     this.refresh();
 		this.refresh();
-
-  }
-
-  getRecord(recipe : Recipe){
-    return recipe;
   }
 
   toggleFavorite(recipe: Recipe){
@@ -91,12 +85,5 @@ export class RecipesListComponent implements OnInit {
     this.favoritesFilter = false;
     this.dataSource.filter = "";
     this.filter = "";
-
   }
-
-
-
-
-
 }
-

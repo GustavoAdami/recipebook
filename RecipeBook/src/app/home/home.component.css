@@ -1,99 +1,93 @@
-  .hero {
-    /* text-align: center; */
-    height: 90vh;
-    /* display: flex; */
-    flex-direction: column;
-    justify-content: center;
-    font-family: sans-serif;
-  }
+/**
+ *  Author:         Nicholas Lafrance
+ *  Course:         CST8334 - Software Development Project
+ *  File:           home.component.css
+ *  Summary:        CSS for Home Screen
+ */
 
-  .searchRecipe{
-    text-align: center;
-    /* overflow: visible; */
-    /* background: red; */
-  }
+ .hero {
+  height: 90vh;
+  flex-direction: column;
+  justify-content: center;
+  font-family: sans-serif;
+}
 
-  /* .recipes {
-    padding-left: 10%;
-    background: yellow;
-  } */
+.searchRecipe{
+  text-align: center;
+}
 
-  .element-row:hover {
-    background: #f5f5f5;
-  }
+.element-row:hover {
+  background: #f5f5f5;
+}
 
-  .loading {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-  }
+.loading {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
 
-  .boarder {
-    padding: 30px;
-  }
+.boarder {
+  padding: 30px;
+}
 
-  .heading_prompt {
-    float: left;
-    text-align: left;
-  }
+.heading_prompt {
+  float: left;
+  text-align: left;
+}
 
-  .recommended_recipe {
-    position: relative;
-    top: 90px;
-  }
+.recommended_recipe {
+  position: relative;
+  top: 90px;
+}
 
-  #image_block {
-    height: 400px;
-    width: 700px;
-    /* background-color: #555; */
-  }
+#image_block {
+  height: 400px;
+  width: 700px;
+}
 
-  .website_tip {
-    position: fixed;
-    top: 20%;
-    left: 80%;
-  }
+.website_tip {
+  position: fixed;
+  top: 20%;
+  left: 80%;
+}
 
-  .dialog{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 40px;
-    }
+.dialog{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+}
 
-  .mat-dialog-actions{
-    justify-content: flex-end;
-    }
+.mat-dialog-actions{
+  justify-content: flex-end;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      grid-gap: 20px;
-      align-items: stretch;
-      margin: 10px 10px 10px 10px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+  margin: 10px 10px 10px 10px;
+}
 
-    }
+.clickable-card-title:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+}
 
-    .clickable-card-title:hover {
-      cursor: pointer;
-      box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+.example-header-image {
+  background-image: url('../../../RecipeBookLogoToolbar.png');
+  background-size: cover;
+}
 
-    }
+.logoImg {
+  background-image: url('../../../RecipeBookLogo_2.1.png');
+}
 
-    .example-header-image {
-      background-image: url('../../../RecipeBookLogoToolbar.png');
-      background-size: cover;
-    }
-
-    .logoImg {
-      background-image: url('../../../RecipeBookLogo_2.1.png');
-
-    }
-
-    .buttons {
-      margin: 10px;
-    }
+.buttons {
+  margin: 10px;
+}

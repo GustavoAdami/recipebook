@@ -1,18 +1,17 @@
-import { Component, OnInit, Inject, Optional, ViewChild, OnDestroy, ChangeDetectorRef } from '@angular/core';
+/**
+ *  Author:         Nicholas Lafrance
+ *  Course:         CST8334 - Software Development Project
+ *  File:           home.component.ts
+ *  Summary:        Defines behaviour of Home Screen implementing methods
+ */
+
+import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { HomeService } from './home.service';
-import { JsonPipe } from '@angular/common';
-import { json } from 'express';
-import { element } from 'protractor';
-// import {MatInputModule} from '@angular/material/input';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource, MatDialogRef, PageEvent, MatPaginator } from '@angular/material';
 import { Recipe } from '../recipes-list/recipe';
 import { RecipesListService } from '../recipes-list/recipes-list.service';
 import { OktaAuthService } from '@okta/okta-angular';
-import { Observable } from 'rxjs';
-import {of} from 'rxjs'
-import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
-
 
 class ValueAndText {
   constructor(public value: string, public text: string) { }
@@ -40,10 +39,7 @@ export class HomeComponent implements OnInit{
     new ValueAndText("low-sodium", "Low-Sodium"),
   ]
 
-  // HEALTH LABELS: 'alcohol-free', 'celery-free', 'crustacean-free', 'dairy-free', 'egg-free', 'fish-free',
-  // 'fodmap-free', 'gluten-free', 'keto-friendly', 'kidney-friendly', 'kosher', 'low-potassium', 'lupine-free', 'mustard-free',
-  // 'low-fat-abs', 'No-oil-added', 'low-sugar', 'paleo', 'peanut-free', 'pecatarian', 'pork-free', 'red-meat-free', 'sesame-free',
-  // 'shellfish-free', 'soy-free', 'sugar-conscious', 'tree-nut-free', 'vegan', 'vegetarian', 'wheat-free'
+  // Health Labels available at Edamam API page: https://developer.edamam.com/edamam-docs-recipe-api
   healthLabelsEdamam: ValueAndText[] = [
     new ValueAndText("alcohol-free", "Alcohol-free"),
     // new ValueAndText("celery-free", "Celery-free"),
@@ -83,19 +79,13 @@ export class HomeComponent implements OnInit{
   dialogValue: string;
   sendValue: string;
 
-  constructor(public homeService: HomeService, public dialog: MatDialog) {
-  }
+  constructor(public homeService: HomeService, public dialog: MatDialog) { }
 
   ngOnInit() { }
 
   async searchRecipeByIngredient(ingredient: string) {
-    // this.refresh();
-    // this.dataSource = new MatTableDataSource<any>();
-
     this.loading = true;
     try {
-      console.log('Health label: ' + this.healthLabels);
-
       if (ingredient == undefined || ingredient == null) {
         ingredient = '';
       }
@@ -111,29 +101,19 @@ export class HomeComponent implements OnInit{
         this.healthLabels = '';
       }
 
-      // alert('Ingredient ' + ingredient);
-
-
       var recipesFoundJson = await this.homeService.searchRecipeByIngredient(ingredient, this.dietLabel, this.healthLabels);
     } catch (err) {
       this.loading = false;
-
       alert('Nothing was found with the given parameters');
     }
+
     recipesFoundJson.hits.forEach(element => {
       this.recipesFound.push(element.recipe);
-      // console.log(element.recipe);
-
-
     });
-    console.log(this.recipesFound);
+
     this.dataSource.data = this.recipesFound;
 
     this.loading = false;
-  }
-
-  recipeInformation() {
-    alert('Recipe from Edaman - details');
   }
 
   openDialog(): void {
@@ -147,7 +127,6 @@ export class HomeComponent implements OnInit{
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
       this.dialogValue = result.data;
     });
   }
@@ -156,31 +135,19 @@ export class HomeComponent implements OnInit{
     var recipeFromEdamam = new Recipe();
     recipeFromEdamam = recipe;
 
-    console.log("Printing recipe " + recipeFromEdamam.recipeTitle);
-
     const dialogRef = this.dialog.open(DialogComponent, {
-      // width: '450px',
-      // height: '200px',
       data: {
         pageValue: recipeFromEdamam
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      // this.dialogValue = result.data;
-    });
-
+    dialogRef.afterClosed().subscribe(result => {});
   }
 
   clearSearchParams() {
     window.location.reload();
   }
-
-
-
 }
-
 
 @Component({
   selector: 'app-dialog',
@@ -198,17 +165,12 @@ export class DialogComponent implements OnInit {
     public recipeService: RecipesListService,
     private oktaAuth: OktaAuthService,
 
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    console.log("DATA  " + data.pageValue.ingredientLines)
-    this.fromPage = data.pageValue;
-
-    this.arrayOfIngredients = this.fromPage.ingredientLines;
-
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
+      this.fromPage = data.pageValue;
+      this.arrayOfIngredients = this.fromPage.ingredientLines;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   closeDialog() {
     this.dialogRef.close({ event: 'close'/*,data:this.fromDialog*/ });
@@ -230,8 +192,6 @@ export class DialogComponent implements OnInit {
     savingRecipeFromEdamam.linkToImage = this.fromPage.image;
     savingRecipeFromEdamam.externalLink = this.fromPage.url;
     savingRecipeFromEdamam.isFavorite = this.fromPage.isFavorite;
-
-    console.log("PICTURE" + savingRecipeFromEdamam.linkToImage)
 
     this.recipeService.createRecipe(savingRecipeFromEdamam);
 

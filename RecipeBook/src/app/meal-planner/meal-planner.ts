@@ -1,5 +1,11 @@
-export class MealPlanner {
-  // id?: string;
+/**
+ *  Author:         Elyssa Emanuel
+ *  Course:         CST8334 - Software Development Project
+ *  File:           meal-planner.ts
+ *  Summary:        Model of Meal Planner entity
+ */
+
+ export class MealPlanner {
   userId?: string;
   mondayRecipes: string;
   tuesdayRecipes: string;
@@ -9,4 +15,3 @@ export class MealPlanner {
   saturdayRecipes: string;
   sundayRecipes: string;
 }
-

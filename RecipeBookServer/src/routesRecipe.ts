@@ -1,8 +1,12 @@
+/**
+ *  Author:         Nehemie Jibikila
+ *  Course:         CST8334 - Software Development Project
+ *  File:           routesMealPlanner.ts
+ *  Summary:        Implements API endpoints that connect to database
+ */
+
 import { NextFunction, Request, Response, Router } from 'express';
 import { getRecipeRepository,  Recipe } from './modelRecipe';
-import { isBoolean } from 'util';
-// import {getMongoRepository, getMongoManager} from "typeorm";
-// import { OktaAuthService } from '@okta/okta-angular';
 
 export const router: Router = Router();
 
@@ -48,24 +52,8 @@ router.post('/recipes', async function (req: Request, res: Response, next: NextF
         recipe.externalLink = req.body.externalLink;
         recipe.isFavorite = req.body.isFavorite == "true";
 
-        // console.log(`${recipe.userId}\n
-        // ${recipe.recipeTitle}\n
-        // ${recipe.ingredients}\n
-        // ${recipe.howToPrepare}\n
-        // ${recipe.timeToPrepareInMinutes}\n
-        // ${recipe.calories}\n
-        // ${recipe.nutritionalValue}\n
-        // ${recipe.additionalInfo}\n
-        // ${recipe.glutenFree}\n
-        // ${recipe.vegan}\n
-        // ${recipe.diabeticFriendly}\n
-        // ${recipe.riskOfAllergies}\n
-        // ${recipe.isFavorite}\n`);
-
         const result = await recipeRepository.save(recipe);
         res.send(result);
-
-        // res.sendStatus(200);
     }
     catch (err) {
         return next(err);
@@ -91,21 +79,6 @@ router.post('/recipes/:id', async function (req: Request, res: Response, next: N
         recipe.externalLink = req.body.externalLink;
         recipe.isFavorite = JSON.parse(req.body.isFavorite);
 
-        // console.log(`${recipe.userId}\n
-        // ${recipe.recipeTitle}\n
-        // ${recipe.ingredients}\n
-        // ${recipe.howToPrepare}\n
-        // ${recipe.timeToPrepareInMinutes}\n
-        // ${recipe.calories}\n
-        // ${recipe.nutritionalValue}\n
-        // ${recipe.additionalInfo}\n
-        // ${recipe.glutenFree}\n
-        // ${recipe.vegan}\n
-        // ${recipe.diabeticFriendly}\n
-        // ${recipe.riskOfAllergies}\n
-        // ${recipe.isFavorite}\n`);
-
-
         const result = await recipeRepository.save(recipe);
 
         res.send(result);
@@ -117,12 +90,9 @@ router.post('/recipes/:id', async function (req: Request, res: Response, next: N
 
 router.delete('/recipes/:id', async function (req: Request, res: Response, next: NextFunction) {
     try {
-
         const recipeRepository = await getRecipeRepository();
         const result = await recipeRepository.delete(req.params.id);
         res.send(result);
-
-
     }
     catch (err) {
         return next(err);

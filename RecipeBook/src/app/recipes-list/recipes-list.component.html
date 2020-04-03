@@ -1,16 +1,16 @@
+<!-- /**
+ *  Author:         Gustavo Aquino Adami dos Santos
+ *  Course:         CST8334 - Software Development Project
+ *  File:           recipe-list.component.html
+ *  Summary:        Definition My Recipes Page
+ */ -->
+
 <h1 class="h1">My Recipes</h1>
 <div>
   <button mat-flat-button color="primary" (click)="createRecipe()">Create Recipe</button>
 </div>
 
 <div fxLayout fxLayoutAlign="center">
-  <!-- <label for="typeText">Filter by Text
-    <input type="radio" id="typeText" name="typeOfFilter" value="true" [(ngModel)]="typeOfFilter" />
-  </label>
-
-  <label for="typeFavorite">Filter by Favorites
-    <input type="radio" id="typeFavorite" name="typeOfFilter" value="false" [(ngModel)]="typeOfFilter" />
-  </label> -->
   <mat-form-field fxFlex="100%" fxFlex.gt-sm="20%">
     <input matInput type="text" ng-checked="!typeText" [(ngModel)]="filter" (keyup)="doFilter($event.target.value)"
       placeholder="Filter">

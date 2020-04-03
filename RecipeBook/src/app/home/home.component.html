@@ -1,14 +1,17 @@
+<!-- /**
+ *  Author:         Nicholas Lafrance
+ *  Course:         CST8334 - Software Development Project
+ *  File:           home.component.html
+ *  Summary:        Defines Home Screen of Recipe Book
+ */ -->
+
 <div class="searchRecipe">
   <h1>Welcome to</h1>
   <img class="logoImg" src="../../../RecipeBookLogo_2.1.png" alt="Photo unavailable" title="Home page of Recipe Book">
 
-  <!-- <p>Let's cook something!</p> -->
-
   <h2>What do you want to cook?</h2>
 
-  <input type="text" [(ngModel)]="ingredientToSearch" (keyup.enter)="searchRecipeByIngredient(ingredientToSearch)"
-    placeholder="Search recipe by ingredient on Edaman API" size="50" required>
-  <!-- <a><input type="button" value="Search" (click)="searchRecipeByIngredient()"></a> -->
+  <input type="text" [(ngModel)]="ingredientToSearch" (keyup.enter)="searchRecipeByIngredient(ingredientToSearch)" placeholder="Search recipe by ingredient on Edaman API" size="50" required>
   <br />
   <br />
 
@@ -16,7 +19,6 @@
   <select name="diet" [(ngModel)]="dietLabel" ngDefaultControl>
     <option disabled selected value> -- Select an option -- </option>
     <option *ngFor="let dietLabel of dietLabelsEdamam" [value]=dietLabel.value>{{dietLabel.text}}</option>
-
   </select>
 
   <label>Health Label</label>
@@ -62,35 +64,4 @@
       </mat-card-actions>
     </mat-card>
   </mat-card-content>
-
 </div>
-
-<!-- <app-recipe-carousel></app-recipe-carousel> -->
-
-<!-- <div class="hero">
-  <div class="boarder">
-    <div class="recommended_recipe">
-
-      <h2>Recommended Recipe:</h2>
-      <h3><a href="">Stale Bread</a></h3>
-      <p>This recipe blends the mouth-watering flavours of old food and plain flavourless bread to bring a</p>
-      <p>delicious new family-friendly recipe to your table! With only one ingredient this recipe will...</p>
-      <div id="image_block">
-        <img src="https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg">
-      </div>
-    </div>
-
-    <div class="website_tip">
-      <h2>Pro Tip:</h2>
-      <p>Click the "Weekly Planner" button located at</p>
-      <p>the top right of the page to visit the recipe</p>
-      <p>planner page! This page lets you create a</p>
-      <p>calendar and plan recipes to cook for specific</p>
-      <p>meals! You can then use the calendar when</p>
-      <p>grocery shopping to reference which ingredients</p>
-      <p>you need to buy for the weeks meals! <a href="/weeklyplanner">Click here</a></p>
-      <p>to try out the weekly planner!</p>
-    </div>
-
-  </div>
-</div> -->
