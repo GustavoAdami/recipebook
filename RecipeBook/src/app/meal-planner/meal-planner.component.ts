@@ -24,7 +24,7 @@ export class MealPlannerComponent implements OnInit {
 
   listOfRecipes = [];
 
-  mealsTypes = ['Breakfast', 'Lunch', 'Dessert', 'Dinner', 'Supper'];
+  mealsTypes = ['Breakfast', 'Lunch', 'Dessert', 'Dinner', 'Snack'];
 
   mondayRecipes = ['', '', '', '', ''];
 
