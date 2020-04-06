@@ -13,10 +13,10 @@ You have to run command below in both directories: recipebook\RecipeBook and rec
 Run `npm i` to download the project dependencies.
 
 ## Okta Identity Provider
-Recipe Book uses Okta* as an identity manager provider. So you have to create an developer/admin account in Okta, add an application, generate a client ID and update the code as described in the tutorial.
+Recipe Book uses Okta** as an identity manager provider. So you have to create an developer/admin account in Okta, add an application, generate a client ID and update the code as described in the tutorial.
 https://developer.okta.com/signup
 
-* Please check the tutorial for Okta we provided in the word document.
+** Please check the tutorial for Okta we provided in the word document.
 
 ##Edamam API
 Recipe Book uses Edamam API** to retrive recipes from the web. You need an API key to make the request. Please create and Edaman developer account, generate API Key and update the code as described in the tutorial.
@@ -46,47 +46,5 @@ Go to `https://www.npmjs.com/` and search the package name stated in the error m
 For package "typeorm", it would be `npm i typeorm`.
 
 ## Database
-A local SQLite database file is created in RecipeBookServer root directory
+Local SQLite database files are created in RecipeBookServer root directory
 
-## Directory structure
-RecipeBook
-+-- src
-|   +-- app
-|   |   +-- home
-|   |   |   +-- dialog.component.css
-|   |   |   +-- dialog.component.html
-|   |   |   +-- home.component.css
-|   |   |   +-- home.component.html
-|   |   |   +-- home.component.ts
-|   |   |   +-- home.service.ts
-|   |   +-- meal-planner
-|   |   |   +-- meal.planner.component.css
-|   |   |   +-- meal.planner.component.html
-|   |   |   +-- meal.planner.component.ts
-|   |   |   +-- meal.planner.service.ts
-|   |   |   +-- meal.planner.ts
-|   |   +-- recipe
-|   |   |   +-- recipe.component.css
-|   |   |   +-- recipe.component.html
-|   |   |   +-- recipe.component.ts
-|   |   +-- recipe-list
-|   |   |   +-- recipe.ts
-|   |   |   +-- recipe-list.component.css
-|   |   |   +-- recipe-list.component.html
-|   |   |   +-- recipe-list.component.ts
-|   |   |   +-- recipe-list.service.ts
-|   |   +-- app-routing.module.ts
-|   |   +-- app.component.css
-|   |   +-- app.component.html
-|   |   +-- app.component.ts
-|   |   +-- app.module.ts
-
-
-RecipeBookServer
-+-- src
-|   +-- auth.ts
-|   +-- modelMealPlanner.ts
-|   +-- modelRecipe.ts
-|   +-- routesMealPlanner.ts
-|   +-- routesRecipe.ts
-|   +-- server.ts
