@@ -18,7 +18,7 @@ https://developer.okta.com/signup
 
 ** Please check the tutorial for Okta we provided in the word document.
 
-##Edamam API
+## Edamam API
 Recipe Book uses Edamam API** to retrive recipes from the web. You need an API key to make the request. Please create and Edaman developer account, generate API Key and update the code as described in the tutorial.
 https://developer.edamam.com/
 
