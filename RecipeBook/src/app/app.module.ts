@@ -39,6 +39,7 @@ import { HomeComponent, DialogComponent } from './home/home.component';
 import { MealPlannerComponent } from './meal-planner/meal-planner.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import config from '../../config/config.json';
 
 @NgModule({
   declarations: [
@@ -67,9 +68,9 @@ import { RecipeComponent } from './recipe/recipe.component';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     OktaAuthModule.initAuth({
-      issuer: 'https://dev-810851.okta.com/oauth2/default',
-      redirectUri: 'http://localhost:4200/implicit/callback',
-      clientId: '0oa1a9g8grSMSPfQp4x6'
+      issuer: config.okta.issuer,
+      redirectUri: config.okta.redirectUri,
+      clientId: config.okta.clientId
     }),
     FormsModule,
     MatCarouselModule.forRoot(),

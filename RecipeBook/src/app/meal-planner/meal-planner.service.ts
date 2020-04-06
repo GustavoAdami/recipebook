@@ -1,5 +1,5 @@
 /**
- *  Author:         Elyssa Emanuel
+ *  Author:         Nicholas Lafrance
  *  Course:         CST8334 - Software Development Project
  *  File:           meal-planner.service.ts
  *  Summary:        Supports Meal Planner connection with database

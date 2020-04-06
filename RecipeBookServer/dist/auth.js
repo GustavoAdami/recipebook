@@ -15,9 +15,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const OktaJwtVerifier = require('@okta/jwt-verifier');
+const config = require('config');
 const oktaJwtVerifier = new OktaJwtVerifier({
-    issuer: 'https://dev-810851.okta.com/oauth2/default',
-    clientId: '0oa1a9g8grSMSPfQp4x6'
+    issuer: config.get('okta.issuer'),
+    clientId: config.get('okta.clientId')
 });
 function oktaAuth(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {

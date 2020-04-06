@@ -1,5 +1,5 @@
 /**
- *  Author:         Gustavo Aquino Adami dos Santos
+ *  Author:         Nehemie Jibikila
  *  Course:         CST8334 - Software Development Project
  *  File:           recipe-list.service.ts
  *  Summary:        Supporting database connection for My Recipes Page

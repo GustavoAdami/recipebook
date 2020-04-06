@@ -1,5 +1,5 @@
 /**
- *  Author:         Nicholas Lafrance
+ *  Author:         Tam Nhan
  *  Course:         CST8334 - Software Development Project
  *  File:           home.service.ts
  *  Summary:        Service for interacting with database server
@@ -8,10 +8,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OktaAuthService } from '@okta/okta-angular';
+// const config = require('config');
+import config from '../../../config/config.json';
 
-const baseUrl = 'https://api.edamam.com/search';
-const app_id = '970858f6';
-const app_key = 'ac0f73f1eb2db79758869491d634e148';
+const baseUrl = config.edamam.baseUrl;
+const app_id = config.edamam.app_id;
+const app_key = config.edamam.app_key;
 const numberOfResults = 50;
 
 @Injectable({

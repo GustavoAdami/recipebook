@@ -1,5 +1,5 @@
 /**
- *  Author:         Elyssa Emanuel
+ *  Author:         Nicholas Lafrance
  *  Course:         CST8334 - Software Development Project
  *  File:           meal-planner.component.ts
  *  Summary:        Implements methods for Meal Planner behaviours

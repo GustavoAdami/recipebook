@@ -1,5 +1,5 @@
 /**
- *  Author:         Nicholas Lafrance
+ *  Author:         Tam Nhan
  *  Course:         CST8334 - Software Development Project
  *  File:           home.component.ts
  *  Summary:        Defines behaviour of Home Screen implementing methods

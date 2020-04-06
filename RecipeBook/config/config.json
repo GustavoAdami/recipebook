@@ -1,0 +1,12 @@
+{
+  "edamam": {
+    "baseUrl": "https://api.edamam.com/search",
+    "app_id": "{{YOUR EDAMAM API ID HERE}}",
+    "app_key": "{{YOUR EDAMAM APP KEY HERE}}"
+  },
+  "okta": {
+    "issuer": "https://{{YOUR OKTA ORG URL HERE}}.okta.com/oauth2/default",
+    "redirectUri": "http://localhost:4200/implicit/callback",
+    "clientId": "{{YOUR OKTA CLIENT_ID HERE}}"
+  }
+}

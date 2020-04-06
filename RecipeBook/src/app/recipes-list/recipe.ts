@@ -1,5 +1,5 @@
 /**
- *  Author:         Gustavo Aquino Adami dos Santos
+ *  Author:        Nehemie Jibikila
  *  Course:         CST8334 - Software Development Project
  *  File:           recipe.ts
  *  Summary:        Model of Recipe Entity

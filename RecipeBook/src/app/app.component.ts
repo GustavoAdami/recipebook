@@ -6,7 +6,6 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../app/home/home.service';
 import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({

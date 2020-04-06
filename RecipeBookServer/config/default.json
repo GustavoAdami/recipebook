@@ -1,0 +1,6 @@
+{
+  "okta": {
+    "issuer": "https://{{YOUR OKTA ORG URL HERE}}.okta.com/oauth2/default",
+    "clientId": "{{YOUR OKTA CLIENT_ID HERE}}"
+  }
+}
