@@ -39,7 +39,7 @@
 		"rxjs": "~6.4.0",
 		"sqlite3": "4.1.1",
 		"tsc": "1.20150623.0",
-		"typeorm": "^0.2.22",
+		"typeorm": "^0.2.25",
 		"zone.js": "^0.8.29"
 	},
 	"devDependencies": {
