@@ -19,7 +19,7 @@
     "express": "4.18.2",
     "express-bearer-token": "2.2.0",
     "mongodb": "^3.5.2",
-    "mongoose": "^5.8.11",
+    "mongoose": "^5.13.20",
     "sqlite3": "^4.1.1",
     "tsc": "1.20150623.0",
     "typeorm": "^0.2.25",
